@@ -34,6 +34,10 @@ Resources:
                   console.log('Message is spam or contains virus, ignoring.');
                   context.succeed();
               }
+          
+              console.log('Msg');
+              console.log(msgInfo);
+
 
               var email = msgInfo.content, headers = "From: "+forwardFrom+"\r\n";
               headers += "Reply-To: "+msgInfo.mail.commonHeaders.from[0]+"\r\n";
@@ -134,7 +138,7 @@ Resources:
   SESEmailForwardRule:
     Type: AWS::SES::ReceiptRule
     Properties:
-      RuleSetName: SESEmailForwardRuleSet
+      RuleSetName: !Ref SESEmailForwardRuleSet
       Rule:
         Enabled: true
         ScanEnabled: true
@@ -142,8 +146,8 @@ Resources:
           - Ref: Recipient
         Actions:
           - SNSAction:
-            Encoding: UTF-8
-            TopicArn: SNSEmailReceiveTopic
+              Encoding: UTF-8
+              TopicArn: !Ref SNSEmailReceiveTopic
 
 Outputs:
   LambdaFunction:

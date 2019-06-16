@@ -10,6 +10,9 @@ exports.handler = function(event, context) {
         context.succeed();
     }
 
+    console.log('Msg');
+    console.log(msgInfo);
+
     var email = msgInfo.content,
         headers = "From: " + forwardFrom + "\r\n";
     headers += "Reply-To: " + msgInfo.mail.commonHeaders.from[0] + "\r\n";
