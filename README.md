@@ -18,3 +18,4 @@ You need to active RuleSet in SES
 ## Tips
 - Make sure sender and forwarder emails are verified in SES
 - Make sure Recipient email or domain is verified
+- Make sure you have MX record in hosted zone like: ```10 inbound-smtp.us-west-2.amazonaws.com```
